@@ -7,8 +7,8 @@ SHORT_DATETIME_FORMAT = "%d/%m/%Y %H:%M:%S"
 
 
 def pegar_data_hora_atual():
-    """ 
-    Retorna a data e hora atual 
+    """
+    Retorna a data e hora atual
     :return data, hora, data_hora
     :rtype list
     """
@@ -21,7 +21,7 @@ def pegar_data_hora_atual():
 
 def tirar_foto(frame, dimensoes, file_name):
     """
-    Lida com o registro de fotos 
+    Lida com o registro de fotos
     :param frame numpy.ndarray = O frame de onde a foto deve ser registrada
     :param dimensoes numpy.ndarray = As dimensoes (x,y,w,h) para criar um novo frame a apartir das dimensoes informadas
     :param file_name str = O nome do arquivo para salvar a imagem
@@ -52,7 +52,6 @@ def main():
     while True:
         retval, frame = camera.read()
         frame = cv2.resize(frame, None, fx=.5, fy=.5)
-        print(type(frame))
         if mostrar_comandos:
             width = camera.get(cv2.CAP_PROP_FRAME_WIDTH)
             height = camera.get(cv2.CAP_PROP_FRAME_HEIGHT)
@@ -108,7 +107,6 @@ def main():
                     cv2.putText(frame, horario[2], (int(x / 2), y), font, 1, (255, 255, 0), 1, cv2.LINE_AA)
                     key = cv2.waitKey(1)
                     if key == ord('f'):
-                        print(type(carro))
                         tirar_foto(frame, carro, x)
 
         cv2.imshow('Detector de carros', frame)
